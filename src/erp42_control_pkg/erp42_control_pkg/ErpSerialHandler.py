@@ -81,7 +81,7 @@ class ERPHandler(Node):
         #------------------ 주기 타이머 ------------------#
         self.timer = self.create_timer(1.0 / 40.0, self.timer_callback)  # 40Hz loop
 
-    def recvPacket(self):
+    def recv_packet(self):
         try:
             packet = self.serial.read(18)
             hex_data = packet.hex()
@@ -100,7 +100,6 @@ class ERPHandler(Node):
 
         except Exception as e:
             self.get_logger().warn(f"recvPacket Error: {e}")
-
 
 
     # ROS 토픽 콜백: 차량 제어 명령 수신
